@@ -1,0 +1,67 @@
+[project]
+name = "tooltility"
+version = "0.0.1"
+description = "A lightweight internal web app of small, safe utilities built with Streamlit."
+license = {text = "MIT"}
+authors = [
+    {name = "Mikheil Tabidze", email = "m.tabidze@gmail.com"}
+]
+readme = "README.md"
+repository = "https://github.com/mtabidze/tooltility"
+requires-python = ">=3.14,<4.0"
+dependencies = [
+    "streamlit (>=1.50.0,<2.0.0)",
+    "pyyaml (>=6.0.3,<7.0.0)",
+]
+
+[tool.poetry]
+package-mode = false
+
+[tool.poetry.group.dev.dependencies]
+watchdog = "^6.0.0"
+ruff = "^0.12.12"
+mypy = "^1.18.2"
+pip-licenses = "^5.5.0"
+pip-audit = "^2.9.0"
+pytest = "^8.4.2"
+pytest-asyncio = "^1.2.0"
+pytest-random-order = "^1.2.0"
+coverage = "^7.11.0"
+pytest-cov = "^6.3.0"
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+pythonpath = ["app/src"]
+
+[tool.mypy]
+python_version = "3.14"
+strict = true
+install_types = true
+non_interactive = true
+explicit_package_bases = true
+ignore_missing_imports = true
+files = ["app/src"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+preview = true
+select = [
+    "AIR", "ERA", "FAST", "YTT", "ANN", "ASYNC", "S", "BLE", "FBT", "B",
+    "A", "COM", "C4", "CPY", "DTZ", "T10", "DJ", "EM", "EXE", "FIX",
+    "FA", "INT",  "ISC", "ICN", "LOG", "G", "INP", "PIE", "T20", "PYI",
+    "PT", "Q", "RSE", "RET", "SLF", "SIM", "SLOT", "TID", "TD", "TC",
+    "ARG", "PTH", "FLY", "I", "C90", "NPY", "PD", "N", "PERF", "E",
+    "W", "DOC", "D", "F", "PGH", "PL", "UP", "FURB","RUF", "TRY"
+]
+ignore = [
+    "COM812",  # missing-trailing-comma (COM812) may cause conflicts when used with the formatter
+    "D1",      # missing docstrings
+    "D203",    # incorrect-blank-line-before-class (D203) and no-blank-line-before-class (D211) are incompatible.
+    "D212",    # multi-line-summary-first-line (D212) and multi-line-summary-second-line (D213) are incompatible.
+]
